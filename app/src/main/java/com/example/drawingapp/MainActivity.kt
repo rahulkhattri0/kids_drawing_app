@@ -6,18 +6,29 @@ import android.os.Bundle
 import android.widget.Button
 
 import android.widget.ImageButton
+import android.widget.LinearLayout
+import androidx.core.content.ContextCompat
+import androidx.core.view.get
 
 class MainActivity : AppCompatActivity() {
     private var DrawingView : DrawingView? =null
+    private var ImageButtonCurrent : ImageButton? =null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         DrawingView = findViewById(R.id.Drawing_view)
         DrawingView!!.set_size_for_brush(20.toFloat())
+
         val brushbutton : ImageButton = findViewById(R.id.ib_brush)
         brushbutton.setOnClickListener{
             showBrushSizeDiag()
         }
+        val linear_layout :LinearLayout = findViewById(R.id.color_palette)
+        ImageButtonCurrent = linear_layout[2] as ImageButton
+        ImageButtonCurrent!!.setImageDrawable(
+            ContextCompat.getDrawable(this,R.drawable.pallete_selected)
+        )
+
     }
     private fun showBrushSizeDiag(){
         var brushDialog :Dialog = Dialog(this)

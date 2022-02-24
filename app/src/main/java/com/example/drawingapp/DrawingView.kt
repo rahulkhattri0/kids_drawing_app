@@ -6,6 +6,7 @@ import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.MotionEvent
 import android.view.View
+import android.widget.ImageButton
 import android.widget.Toast
 
 
@@ -41,7 +42,6 @@ class DrawingView(context: Context, attributes: AttributeSet) : View(context, at
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         canvas.drawBitmap(canvasbitmap!!,0f,0f,canvas_paint)
-//        Toast.makeText(this,"view Drawn",Toast.LENGTH_LONG).show()
         for(paths in mpaths){
             drawpaint?.strokeWidth = paths.brushThickness
             drawpaint!!.color= paths.color
@@ -82,6 +82,13 @@ class DrawingView(context: Context, attributes: AttributeSet) : View(context, at
     fun set_size_for_brush(newSize: Float){
         brushsize= TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,newSize,resources.displayMetrics)
         drawpaint!!.strokeWidth= brushsize
+    }
+    fun setColor(newColor:String){
+        color = Color.parseColor(newColor)
+        drawpaint!!.color= color
+    }
+    fun paintclicled(Ib : ImageButton){
+        
     }
     internal inner class CustomPath(var color:Int,var brushThickness:Float) : Path(){
 

@@ -31,7 +31,56 @@
             android:layout_height="25dp"
             android:layout_margin="2dp"
             android:src="@drawable/pallete_normal"
-            android:tag =
+            android:tag ="@color/skin"
+            android:background="@color/skin"
+            />
+        <ImageButton
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_margin="2dp"
+            android:src="@drawable/pallete_normal"
+            android:tag ="@color/black"
+            android:background="@color/black"
+            />
+        <ImageButton
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_margin="2dp"
+            android:src="@drawable/pallete_normal"
+            android:tag ="@color/red"
+            android:background="@color/red"
+            />
+        <ImageButton
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_margin="2dp"
+            android:src="@drawable/pallete_normal"
+            android:tag ="@color/green"
+            android:background="@color/green"
+            />
+        <ImageButton
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_margin="2dp"
+            android:src="@drawable/pallete_normal"
+            android:tag ="@color/blue"
+            android:background="@color/blue"
+            />
+        <ImageButton
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_margin="2dp"
+            android:src="@drawable/pallete_normal"
+            android:tag ="@color/lollipop"
+            android:background="@color/lollipop"
+            />
+        <ImageButton
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_margin="2dp"
+            android:src="@drawable/pallete_normal"
+            android:tag ="@color/random"
+            android:background="@color/random"
             />
     </LinearLayout>
     <ImageButton
