@@ -87,9 +87,6 @@ class DrawingView(context: Context, attributes: AttributeSet) : View(context, at
         color = Color.parseColor(newColor)
         drawpaint!!.color= color
     }
-    fun paintclicled(Ib : ImageButton){
-        
-    }
     internal inner class CustomPath(var color:Int,var brushThickness:Float) : Path(){
 
     }

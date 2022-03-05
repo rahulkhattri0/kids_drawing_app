@@ -3,10 +3,12 @@ package com.example.drawingapp
 import android.app.Dialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 
 import android.widget.ImageButton
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.view.get
 
@@ -50,5 +52,16 @@ class MainActivity : AppCompatActivity() {
             brushDialog.dismiss()
         }
         brushDialog.show()
+    }
+    fun paintclicked(view: View){
+        if(view !== ImageButtonCurrent){
+            var imageButton:ImageButton = view as ImageButton
+            var colorTag: String = imageButton.tag.toString();
+            DrawingView!!.setColor(colorTag);
+
+            imageButton.setImageDrawable(ContextCompat.getDrawable(this,R.drawable.pallete_selected));
+            ImageButtonCurrent!!.setImageDrawable(ContextCompat.getDrawable(this,R.drawable.pallete_normal));
+            ImageButtonCurrent = view;
+        }
     }
 }
