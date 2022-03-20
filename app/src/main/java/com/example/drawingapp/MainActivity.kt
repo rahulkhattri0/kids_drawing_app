@@ -9,18 +9,26 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.core.view.get
 
 class MainActivity : AppCompatActivity() {
     private var DrawingView : DrawingView? =null
     private var ImageButtonCurrent : ImageButton? =null
+    private var galleryButton : ImageButton? =null
+    private var permissions : ActivityResultLauncher<String> = registerForActivityResult(
+    )
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         DrawingView = findViewById(R.id.Drawing_view)
         DrawingView!!.set_size_for_brush(20.toFloat())
+        galleryButton = findViewById(R.id.gallery_button)
+        galleryButton!!.setOnClickListener {
 
+        }
         val brushbutton : ImageButton = findViewById(R.id.ib_brush)
         brushbutton.setOnClickListener{
             showBrushSizeDiag()
