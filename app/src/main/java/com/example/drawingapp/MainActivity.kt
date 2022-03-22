@@ -1,6 +1,8 @@
 package com.example.drawingapp
 
+import android.app.AlertDialog
 import android.app.Dialog
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -13,13 +15,21 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.core.view.get
+import android.Manifest
 
 class MainActivity : AppCompatActivity() {
     private var DrawingView : DrawingView? =null
     private var ImageButtonCurrent : ImageButton? =null
     private var galleryButton : ImageButton? =null
-    private var permissions : ActivityResultLauncher<String> = registerForActivityResult(
-    )
+    private var camerapermission : ActivityResultLauncher<String> = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()){
+            if(it){
+                Toast.makeText(this,"permission for camera granted",Toast.LENGTH_LONG).show()
+            }
+        else{
+                Toast.makeText(this,"permission for camera not granted",Toast.LENGTH_LONG).show()
+            }
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -38,7 +48,23 @@ class MainActivity : AppCompatActivity() {
         ImageButtonCurrent!!.setImageDrawable(
             ContextCompat.getDrawable(this,R.drawable.pallete_selected)
         )
-
+        galleryButton!!.setOnClickListener{
+            if(Build.VERSION.SDK_INT>= Build.VERSION_CODES.M && shouldShowRequestPermissionRationale(Manifest.permission.CAMERA)){
+                showRationale("camera ki permission kyu nahi diye bhaiya","aisa karoge to kaise chalega?!")
+            }
+            else
+            {
+                camerapermission.launch(Manifest.permission.CAMERA)
+            }
+        }
+    }
+    private fun showRationale(Title:String,message:String) {
+        val b: AlertDialog.Builder = AlertDialog.Builder(this)
+        b.setTitle(Title).setMessage(message).setPositiveButton("yeh kar rha hai") { dialog, a ->
+            dialog.dismiss()
+        }
+        val a :AlertDialog= b.create()
+        a.show()
     }
     private fun showBrushSizeDiag(){
         var brushDialog :Dialog = Dialog(this)
