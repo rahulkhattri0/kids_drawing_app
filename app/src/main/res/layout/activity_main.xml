@@ -141,6 +141,22 @@
             android:src="@drawable/ic_gallery"
             android:scaleType="fitCenter"
             />
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:id="@+id/undo_button"
+            android:src="@drawable/ic_undo"
+            android:scaleType="fitCenter"
+            />
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:id="@+id/redo_button"
+            android:src="@drawable/ic_redo"
+            android:scaleType="fitCenter"
+            />
 
 
     </LinearLayout>

@@ -19,7 +19,7 @@ class DrawingView(context: Context, attributes: AttributeSet) : View(context, at
     private var color : Int = Color.GREEN
     private var canvas: Canvas?= null
     private val mpaths = ArrayList<CustomPath>()
-
+    private val undopaths = ArrayList<CustomPath>()
     init {
         setupeverything()
     }
@@ -32,7 +32,17 @@ class DrawingView(context: Context, attributes: AttributeSet) : View(context, at
         canvas_paint= Paint(Paint.DITHER_FLAG)
 
     }
-
+    fun undo(){
+        if(mpaths.size>0){
+            undopaths.add(mpaths.removeAt(mpaths.size - 1))
+            invalidate()
+        }
+    }
+    fun redo(){
+        if(undopaths.size>0)
+        mpaths.add(undopaths.removeAt(undopaths.size - 1))
+        invalidate()
+    }
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
         canvasbitmap = Bitmap.createBitmap(w,h,Bitmap.Config.ARGB_8888)
