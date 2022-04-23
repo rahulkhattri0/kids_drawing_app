@@ -43,6 +43,8 @@ class DrawingView(context: Context, attributes: AttributeSet) : View(context, at
         mpaths.add(undopaths.removeAt(undopaths.size - 1))
         invalidate()
     }
+
+
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
         canvasbitmap = Bitmap.createBitmap(w,h,Bitmap.Config.ARGB_8888)
