@@ -19,6 +19,7 @@ import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.drawable.Drawable
+import android.media.MediaScannerConnection
 import android.os.health.PackageHealthStats
 import android.provider.MediaStore
 import android.util.Log
@@ -151,7 +152,9 @@ class MainActivity : AppCompatActivity() {
                                 Toast.makeText(this@MainActivity,
                                     "file saved : $result", Toast.LENGTH_LONG)
                                     .show()
+                                shareImage(result)
                             }
+
                             else{
                                 Toast.makeText(this@MainActivity,
                                     "could not save file", Toast.LENGTH_LONG)
@@ -208,6 +211,16 @@ class MainActivity : AppCompatActivity() {
             imageButton.setImageDrawable(ContextCompat.getDrawable(this,R.drawable.pallete_selected))
             ImageButtonCurrent!!.setImageDrawable(ContextCompat.getDrawable(this,R.drawable.pallete_normal))
             ImageButtonCurrent = view
+        }
+    }
+    private fun shareImage(result:String){
+        MediaScannerConnection.scanFile(this,arrayOf(result),null){ _,uri ->
+            val shareintent = Intent(Intent.ACTION_SEND)
+            shareintent.putExtra(Intent.EXTRA_STREAM,uri)
+            shareintent.type="image/png"
+            startActivity(Intent.createChooser(shareintent,"share"))
+
+
         }
     }
 
